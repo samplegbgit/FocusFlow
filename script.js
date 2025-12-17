@@ -1,18 +1,17 @@
-let time = 25 * 60;
-const timer = document.getElementById("timer");
-const btn = document.querySelector("button");
-let running = false;
+const input = document.createElement("input");
+input.placeholder = "New task";
+
+const btn = document.createElement("button");
+btn.innerText = "Add";
+
+const list = document.createElement("ul");
+
+document.getElementById("app").append(input, btn, list);
 
 btn.onclick = () => {
-  running = !running;
-  btn.innerText = running ? "Pause" : "Start";
+  if (!input.value) return;
+  const li = document.createElement("li");
+  li.innerText = input.value;
+  list.appendChild(li);
+  input.value = "";
 };
-
-setInterval(() => {
-  if (!running) return;
-
-  time--;
-  let m = Math.floor(time / 60);
-  let s = time % 60;
-  timer.innerText = `${m}:${s < 10 ? "0" : ""}${s}`;
-}, 1000);
