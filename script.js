@@ -15,3 +15,17 @@ btn.onclick = () => {
   list.appendChild(li);
   input.value = "";
 };
+document.querySelectorAll("li").forEach(li => {
+  li.onclick = () => {
+    li.style.textDecoration = "line-through";
+  };
+});
+
+const resetBtn = document.createElement("button");
+resetBtn.innerText = "Reset Timer";
+document.getElementById("app").appendChild(resetBtn);
+
+resetBtn.onclick = () => {
+  time = 25 * 60;
+  timer.innerText = "25:00";
+};
